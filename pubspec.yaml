@@ -13,6 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   easy_localization: ^3.0.8
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:
@@ -30,4 +31,3 @@ flutter:
     - assets/on_boarding_images/
     - assets/splash_images/
     - assets/translations/
-
