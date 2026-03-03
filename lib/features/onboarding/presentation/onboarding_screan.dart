@@ -6,56 +6,46 @@ import 'package:introduction_screen/introduction_screen.dart';
 import '../../../core/ utils/app_assets.dart';
 import '../../../core/ utils/app_colors.dart';
 import '../../../core/ utils/app_styles.dart';
+import '../../../core/widgets/custom_main_button.dart';
 
+class OnboardingScreen extends StatelessWidget {
+  static const String routName = "onboarding";
 
-class OnboardingScreen extends StatefulWidget {
-  static const String routName = "Intro";
+  OnboardingScreen({super.key});
 
-  const OnboardingScreen({super.key});
-
-  @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
-}
-
-class _OnboardingScreenState extends State<OnboardingScreen> {
   final GlobalKey<IntroductionScreenState> introKey =
-  GlobalKey<IntroductionScreenState>();
+      GlobalKey<IntroductionScreenState>();
 
   List<PageViewModel> getPages() {
     return [
       _buildPageModel(
-        title: "Find Your Next Favorite Movie Here",
-        body:
-        "Get access to a huge library of movies to suit all tastes. You will surely like it.",
+        title: "onboarding.page1_title",
+        body: "onboarding.page1_body",
         imagePath: OnBoardingAssets.onBoarding1,
         isFirstPage: true,
       ),
       _buildPageModel(
-        title: "Discover Movies",
-        body:
-        "Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.",
+        title: "onboarding.page2_title",
+        body: "onboarding.page2_body",
         imagePath: OnBoardingAssets.onBoarding2,
       ),
       _buildPageModel(
-        title: "Explore All Genres",
-        body:
-        "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.",
+        title: "onboarding.page3_title",
+        body: "onboarding.page3_body",
         imagePath: OnBoardingAssets.onBoarding3,
       ),
       _buildPageModel(
-        title: "Create Watchlists",
-        body:
-        "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.",
+        title: "onboarding.page4_title",
+        body: "onboarding.page4_body",
         imagePath: OnBoardingAssets.onBoarding4,
       ),
       _buildPageModel(
-        title: "Rate, Review, and Learn",
-        body:
-        "Share your thoughts on the movies you've watched. Dive deep into film details and help others discover great movies with your reviews",
+        title: "onboarding.page5_title",
+        body: "onboarding.page5_body",
         imagePath: OnBoardingAssets.onBoarding5,
       ),
       _buildPageModel(
-        title: "Start Watching Now",
+        title: "onboarding.page6_title",
         body: "",
         imagePath: OnBoardingAssets.onBoarding6,
         isLastPage: true,
@@ -103,13 +93,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             alignment: Alignment.bottomCenter,
             child: Container(
               width: double.infinity,
-              padding:
-              EdgeInsets.symmetric(horizontal: 24.w, vertical: 30.h),
-              decoration: const BoxDecoration(
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 30.h),
+              decoration:  BoxDecoration(
                 color: AppColors.black,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
+                  topLeft: Radius.circular(40.r),
+                  topRight: Radius.circular(40.r),
                 ),
               ),
               child: Column(
@@ -120,27 +109,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     textAlign: TextAlign.center,
                     style: AppStyles.white24700,
                   ),
-                  SizedBox(height: 15.h),
-                  Text(
-                    body.tr(),
-                    textAlign: TextAlign.center,
-                    style: AppStyles.white16400.copyWith(
-                      color: AppColors.white.withOpacity(0.7),
+                  if (body.isNotEmpty) ...[
+                    SizedBox(height: 15.h),
+                    Text(
+                      body.tr(),
+                      textAlign: TextAlign.center,
+                      style: AppStyles.white16400.copyWith(
+                        color: AppColors.white.withOpacity(0.7),
+                      ),
                     ),
-                  ),
+                  ],
                   SizedBox(height: 30.h),
                   if (isFirstPage)
-                    _buildButton(
-                      text: "Explore Now",
-                      onPressed: () =>
-                          introKey.currentState?.next(),
-                      isFilled: true,
+                    CustomMainButton(
+                      text: "onboarding.buttons.explore_now".tr(),
+                      onPressed: () => introKey.currentState?.next(),
+                      borderRadius: 16.r,
+                      backgroundColor: AppColors.primary,
+                      textColor: AppColors.black,
                     )
                   else
                     Column(
                       children: [
-                        _buildButton(
-                          text: isLastPage ? "Finish" : "Next",
+                        CustomMainButton(
+                          text: isLastPage
+                              ? "onboarding.buttons.finish".tr()
+                              : "onboarding.buttons.next".tr(),
                           onPressed: () {
                             if (isLastPage) {
 
@@ -148,14 +142,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               introKey.currentState?.next();
                             }
                           },
-                          isFilled: true,
+                          borderRadius: 16.r,
+                          backgroundColor: AppColors.primary,
+                          textColor: AppColors.black,
                         ),
                         SizedBox(height: 12.h),
-                        _buildButton(
-                          text: "Back",
-                          onPressed: () =>
-                              introKey.currentState?.previous(),
-                          isFilled: false,
+                        CustomMainButton(
+                          text: "onboarding.buttons.back".tr(),
+                          onPressed: () => introKey.currentState?.previous(),
+                          borderRadius: 16.r,
+                          backgroundColor: Colors.transparent,
+                          textColor: AppColors.primary,
+                          borderColor: AppColors.primary,
+
                         ),
                       ],
                     ),
@@ -170,44 +169,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         fullScreen: true,
         contentMargin: EdgeInsets.zero,
         imagePadding: EdgeInsets.zero,
-      ),
-    );
-  }
-
-  Widget _buildButton({
-    required String text,
-    required VoidCallback onPressed,
-    bool isFilled = true,
-  }) {
-    return SizedBox(
-      width: double.infinity,
-      height: 55.h,
-      child: isFilled
-          ? ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-        ),
-        child: Text(
-          text.tr(),
-          style: AppStyles.black20600,
-        ),
-      )
-          : OutlinedButton(
-        onPressed: onPressed,
-        style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: AppColors.primary),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-        ),
-        child: Text(
-          text.tr(),
-          style: AppStyles.primary20600,
-        ),
       ),
     );
   }
