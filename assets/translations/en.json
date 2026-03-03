@@ -1,28 +1,17 @@
-
 {
-  "onboarding": {
-    "page1_title": "Find Your Next Favorite Movie Here",
-    "page1_body": "Get access to a huge library of movies to suit all tastes. You will surely like it.",
-
-    "page2_title": "Discover Movies",
-    "page2_body": "Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.",
-
-    "page3_title": "Explore All Genres",
-    "page3_body": "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.",
-
-    "page4_title": "Create Watchlists",
-    "page4_body": "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.",
-
-    "page5_title": "Rate, Review, and Learn",
-    "page5_body": "Share your thoughts on the movies you've watched. Dive deep into film details and help others discover great movies with your reviews.",
-
-    "page6_title": "Start Watching Now",
-
-    "buttons": {
-      "explore_now": "Explore Now",
-      "next": "Next",
-      "back": "Back",
-      "finish": "Finish"
-    }
-  }
+  "onboarding_title_1": "Find Your Next Favorite Movie Here",
+  "onboarding_body_1": "Get access to a huge library of movies to suit all tastes. You will surely like it.",
+  "onboarding_title_2": "Discover Movies",
+  "onboarding_body_2": "Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.",
+  "onboarding_title_3": "Explore All Genres",
+  "onboarding_body_3": "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.",
+  "onboarding_title_4": "Create Watch lists",
+  "onboarding_body_4": "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.",
+  "onboarding_title_5": "Rate, Review, and Learn",
+  "onboarding_body_5": "Share your thoughts on the movies you've watched. Dive deep into film details and help others discover great movies with your reviews.",
+  "onboarding_title_6": "Start Watching Now",
+  "explore_now": "Explore Now",
+  "next": "Next",
+  "back": "Back",
+  "finish": "Finish"
 }

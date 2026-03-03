@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/onboarding/presentation/onboarding_screan.dart';
+import 'features/onboarding/presentation/views/onboarding_screan.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,11 +29,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
-          initialRoute: OnboardingScreen.routName,
-          routes: {
-            OnboardingScreen.routName: (context) =>  OnboardingScreen(),
-          },
-
+        initialRoute: OnboardingScreen.routName,
+        routes: {
+          OnboardingScreen.routName: (context) => OnboardingScreen(),
+        },
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
