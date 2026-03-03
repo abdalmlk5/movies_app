@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/theme/app_theme.dart';
+import 'features/onboarding/presentation/onboarding_screan.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -25,11 +29,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
+          initialRoute: OnboardingScreen.routName,
+          routes: {
+            OnboardingScreen.routName: (context) =>  OnboardingScreen(),
+          },
+
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-
         darkTheme: darkTheme,
         themeMode: ThemeMode.dark,
       ),
