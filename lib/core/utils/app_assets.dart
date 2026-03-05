@@ -18,9 +18,11 @@ class AppIcons {
   static const String searchIcon = '${_iconsPath}search_icon.png';
   static const String exploreIcon = '${_iconsPath}explore_icon.png';
   static const String eyeOffIcon = '${_iconsPath}eye_off_icon.png';
-  static const String profileIcon = '${_iconsPath}profiel_icon.png';
+  static const String profileIcon = '${_iconsPath}profile_icon.png';
   static const String passwordIcon = '${_iconsPath}password_icon.png';
   static const String playMovieIcon = '${_iconsPath}play_movie_icon.png';
+  static const String egFlagIcon = '${_iconsPath}eg_flag.png';
+  static const String usFlagIcon = '${_iconsPath}us_flag.png';
 }
 
 class AppImages {
@@ -33,7 +35,9 @@ class AppImages {
   static const String avatar7 = '${_imagesPath}avatar_7.png';
   static const String avatar8 = '${_imagesPath}avatar_8.png';
   static const String avatar9 = '${_imagesPath}avatar_9.png';
-  static const String forgetPasswordImage = '${_imagesPath}forget_bassword_image.png';
+  static const String forgetPasswordImage =
+      '${_imagesPath}forget_password_image.png';
+  static const String appLogo = '${_imagesPath}app_logo.png';
 }
 
 class OnBoardingAssets {

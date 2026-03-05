@@ -12,6 +12,7 @@ class CustomMainButton extends StatelessWidget {
   final double borderRadius;
   final double height;
   final Color? borderColor;
+  final String? prefixIcon;
 
   const CustomMainButton({
     super.key,
@@ -23,6 +24,7 @@ class CustomMainButton extends StatelessWidget {
     this.borderRadius = 12,
     this.height = 55,
     this.borderColor,
+    this.prefixIcon,
   });
 
   @override
@@ -50,12 +52,7 @@ class CustomMainButton extends StatelessWidget {
                         color: Colors.white,
                       ),
                     )
-                  : Text(
-                      text,
-                      style: AppStyles.primary20600.copyWith(
-                        color: textColor ?? AppStyles.primary20600.color,
-                      ),
-                    ),
+                  : _buildButtonContent(context),
             )
           : ElevatedButton(
               onPressed: isLoading ? null : onPressed,
@@ -76,13 +73,33 @@ class CustomMainButton extends StatelessWidget {
                         color: Colors.white,
                       ),
                     )
-                  : Text(
-                      text,
-                      style: AppStyles.black20600.copyWith(
-                        color: textColor ?? AppStyles.black20600.color,
-                      ),
-                    ),
+                  : _buildButtonContent(context),
             ),
+    );
+  }
+
+  Widget _buildButtonContent(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (prefixIcon != null) ...[
+          Image.asset(
+            prefixIcon!,
+            height: 24.h,
+            width: 24.w,
+          ),
+          SizedBox(width: 10.w),
+        ],
+        Text(
+          text,
+          style: (backgroundColor == Colors.transparent
+                  ? AppStyles.primary20600
+                  : AppStyles.black20600)
+              .copyWith(
+            color: textColor,
+          ),
+        ),
+      ],
     );
   }
 }

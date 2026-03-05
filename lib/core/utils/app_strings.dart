@@ -17,4 +17,21 @@ class AppStrings {
   static const String next = 'next';
   static const String back = 'back';
   static const String finish = 'finish';
+  static const String email = 'email';
+  static const String password = 'password';
+  static const String forgetPassword = 'forget_password';
+  static const String resetPassword = 'reset_password';
+  static const String login = 'login';
+  static const String createAccount = 'create_account';
+  static const String loginWithGoogle = 'login_with_google';
+  static const String donTHaveAccount = 'don\'t_have_account';
+  static const String createOne = 'create_one';
+  static const String or = 'or';
+  static const String register = 'register';
+  static const String name = 'name';
+  static const String confirmPassword = 'confirm_password';
+  static const String phoneNumber = 'phone_number';
+  static const String alreadyHaveAccount = 'already_have_account';
+  static const String avatar = 'avatar';
+  static const String verifyEmail = 'verify_email';
 }

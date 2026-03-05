@@ -13,5 +13,22 @@
   "explore_now": "Explore Now",
   "next": "Next",
   "back": "Back",
-  "finish": "Finish"
+  "finish": "Finish",
+  "email": "Email",
+  "password": "Password",
+  "forget_password": "Forget Password ?",
+  "reset_password": "Reset Password",
+  "login": "Login",
+  "create_account": "Create Account",
+  "login_with_google":"Login With Google",
+  "don't_have_account": "Don’t Have Account ?",
+  "create_one": "Create One",
+  "or" : "OR",
+  "register": "Register",
+  "name": "Name",
+  "confirm_password": "Confirm Password",
+  "phone_number": "Phone Number",
+  "already_have_account": "Already Have Account ?",
+  "avatar": "Avatar",
+  "verify_email": "Verify Email"
 }
