@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:movies_app/core/utils/app_routes.dart';
 import 'package:movies_app/core/utils/app_strings.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -9,11 +10,15 @@ import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/custom_main_button.dart';
 import '../models/get_models.dart';
 
-class OnboardingScreen extends StatelessWidget {
-  static const String routName = "onboarding";
+// i covert to statefulWidget to use context in Navigator
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
-  OnboardingScreen({super.key});
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
 
+class _OnboardingScreenState extends State<OnboardingScreen> {
   final GlobalKey<IntroductionScreenState> introKey =
       GlobalKey<IntroductionScreenState>();
 
@@ -95,6 +100,8 @@ class OnboardingScreen extends StatelessWidget {
                               : AppStrings.next.tr(),
                           onPressed: () {
                             if (isLastPage) {
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  AppRoutes.loginScreen, (route) => false);
                             } else {
                               introKey.currentState?.next();
                             }
