@@ -20,6 +20,9 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   get_it: ^9.2.1
   injectable: ^2.7.1+4
+  flutter_svg: ^2.2.3
+  animated_toggle_switch: ^0.8.2
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
