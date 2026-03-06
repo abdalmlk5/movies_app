@@ -34,6 +34,11 @@ class AppImages {
   static const String avatar8 = '${_imagesPath}avatar_8.png';
   static const String avatar9 = '${_imagesPath}avatar_9.png';
   static const String forgetPasswordImage = '${_imagesPath}forget_bassword_image.png';
+  static const String AvailableNow = '${_imagesPath}available_now.png';
+  static const String WatchNowText = '${_imagesPath}watch_now.png';
+
+
+
 }
 
 class OnBoardingAssets {

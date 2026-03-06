@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/features/home/home_tab/presentation/views/home_screen.dart';
 
 import 'core/theme/app_theme.dart';
 import 'features/onboarding/presentation/onboarding_screan.dart';
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
-          initialRoute: OnboardingScreen.routName,
+          initialRoute: HomeScreen.routName,
           routes: {
             OnboardingScreen.routName: (context) =>  OnboardingScreen(),
+             HomeScreen.routName: (context) =>  HomeScreen(),
           },
 
         debugShowCheckedModeBanner: false,
