@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../ utils/app_styles.dart';
 
+import '../utils/app_styles.dart';
 
 class CustomMainButton extends StatelessWidget {
   final String text;
@@ -12,6 +12,7 @@ class CustomMainButton extends StatelessWidget {
   final double borderRadius;
   final double height;
   final Color? borderColor;
+  final String? prefixIcon;
 
   const CustomMainButton({
     super.key,
@@ -23,6 +24,7 @@ class CustomMainButton extends StatelessWidget {
     this.borderRadius = 12,
     this.height = 55,
     this.borderColor,
+    this.prefixIcon,
   });
 
   @override
@@ -34,55 +36,70 @@ class CustomMainButton extends StatelessWidget {
       height: height.h,
       child: isOutlined
           ? OutlinedButton(
-        onPressed: isLoading ? null : onPressed,
-        style: OutlinedButton.styleFrom(
-          side: BorderSide(color: borderColor ?? Colors.transparent),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius.r),
-          ),
-        ),
-        child: isLoading
-            ? const SizedBox(
-          width: 22,
-          height: 22,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            color: Colors.white,
-          ),
-        )
-            : Text(
-          text,
-          style: AppStyles.primary20600.copyWith(
-            color: textColor ?? AppStyles.primary20600.color,
-          ),
-        ),
-      )
+              onPressed: isLoading ? null : onPressed,
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: borderColor ?? Colors.transparent),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius.r),
+                ),
+              ),
+              child: isLoading
+                  ? const SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                  : _buildButtonContent(context),
+            )
           : ElevatedButton(
-        onPressed: isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor:
-          backgroundColor ?? Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius.r),
+              onPressed: isLoading ? null : onPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    backgroundColor ?? Theme.of(context).primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius.r),
+                ),
+                elevation: 0,
+              ),
+              child: isLoading
+                  ? const SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                  : _buildButtonContent(context),
+            ),
+    );
+  }
+
+  Widget _buildButtonContent(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (prefixIcon != null) ...[
+          Image.asset(
+            prefixIcon!,
+            height: 24.h,
+            width: 24.w,
           ),
-          elevation: 0,
-        ),
-        child: isLoading
-            ? const SizedBox(
-          width: 22,
-          height: 22,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            color: Colors.white,
-          ),
-        )
-            : Text(
+          SizedBox(width: 10.w),
+        ],
+        Text(
           text,
-          style: AppStyles.black20600.copyWith(
-            color: textColor ?? AppStyles.black20600.color,
+          style: (backgroundColor == Colors.transparent
+                  ? AppStyles.primary20600
+                  : AppStyles.black20600)
+              .copyWith(
+            color: textColor,
           ),
         ),
-      ),
+      ],
     );
   }
 }

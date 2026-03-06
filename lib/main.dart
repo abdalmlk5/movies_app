@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/features/home/home_tab/presentation/views/home_screen.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/onboarding/presentation/onboarding_screan.dart';
+
+
+import 'features/onboarding/presentation/views/onboarding_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +14,7 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en')],
+      supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       child: const MyApp(),
