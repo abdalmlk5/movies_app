@@ -7,6 +7,7 @@ import 'package:movies_app/core/utils/app_styles.dart';
 import 'package:movies_app/core/widgets/custom_main_button.dart';
 import 'package:movies_app/core/widgets/custom_main_text_form_field.dart';
 
+import '../../../../config/validations/app_validations.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../widgets/avatar_slider.dart';
 import '../widgets/language_toggle_switch.dart';
@@ -73,12 +74,14 @@ class _RegisterViewState extends State<RegisterView> {
                   hintText: AppStrings.name.tr(),
                   prefixIcon: AppIcons.nameIcon,
                   controller: nameController,
+                  validator: (value) => AppValidations.validateName(value),
                 ),
                 SizedBox(height: 15.h),
                 CustomMainTextFormField(
                   hintText: AppStrings.email.tr(),
                   prefixIcon: AppIcons.emailIcon,
                   controller: emailController,
+                  validator: (value) => AppValidations.validateEmail(value),
                 ),
                 SizedBox(height: 15.h),
                 CustomMainTextFormField(
@@ -86,6 +89,7 @@ class _RegisterViewState extends State<RegisterView> {
                   prefixIcon: AppIcons.passwordIcon,
                   controller: passwordController,
                   isSecure: true,
+                  validator: (value) => AppValidations.validatePassword(value),
                 ),
                 SizedBox(height: 15.h),
                 CustomMainTextFormField(
@@ -93,12 +97,18 @@ class _RegisterViewState extends State<RegisterView> {
                   prefixIcon: AppIcons.passwordIcon,
                   controller: confirmPasswordController,
                   isSecure: true,
+                  validator: (value) => AppValidations.validateConfirmPassword(
+                    value,
+                    passwordController.text,
+                  ),
                 ),
                 SizedBox(height: 15.h),
                 CustomMainTextFormField(
                   hintText: AppStrings.phoneNumber.tr(),
                   prefixIcon: AppIcons.phoneIcon,
                   controller: phoneController,
+                  validator: (value) =>
+                      AppValidations.validatePhoneNumber(value),
                 ),
                 SizedBox(height: 30.h),
                 CustomMainButton(

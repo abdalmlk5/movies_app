@@ -8,6 +8,7 @@ import 'package:movies_app/core/utils/app_styles.dart';
 import 'package:movies_app/core/widgets/custom_main_button.dart';
 import 'package:movies_app/core/widgets/custom_main_text_form_field.dart';
 
+import '../../../../config/validations/app_validations.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../widgets/language_toggle_switch.dart';
 
@@ -36,6 +37,7 @@ class LoginView extends StatelessWidget {
                   hintText: AppStrings.email.tr(),
                   prefixIcon: AppIcons.emailIcon,
                   controller: emailController,
+                  validator: (value) => AppValidations.validateEmail(value),
                 ),
                 SizedBox(height: 20.h),
                 CustomMainTextFormField(
@@ -43,6 +45,7 @@ class LoginView extends StatelessWidget {
                   prefixIcon: AppIcons.passwordIcon,
                   controller: passwordController,
                   isSecure: true,
+                  validator: (value) => AppValidations.validatePassword(value),
                 ),
                 SizedBox(height: 10.h),
                 Align(
