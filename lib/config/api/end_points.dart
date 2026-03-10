@@ -24,6 +24,6 @@ class EndPoints {
 
   static const String movieDetails = "https://movies-api.accel.li/api/v2/movie_details.json?";
 
-  static const String movieSuggestions = "$baseUrl/movie_suggestions.json";
+  static const String movieSuggestions = "https://movies-api.accel.li/api/v2/movie_suggestions.json";
 
 }

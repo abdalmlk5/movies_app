@@ -7,9 +7,9 @@ import 'package:movies_app/features/home/home_tab/data/repo/home_repo_impl.dart'
 import 'package:movies_app/features/home/home_tab/presentation/view_model/home_bloc.dart';
 import 'package:movies_app/features/auth/data/models/home_event.dart';
 import 'package:movies_app/features/auth/data/models/home_state.dart';
-import 'package:movies_app/features/home/widget/category_row.dart';
-import 'package:movies_app/features/home/widget/horizontal_movies_list.dart';
-import 'package:movies_app/features/home/widget/movie_carousel.dart';
+import 'package:movies_app/features/home/home_tab/presentation/widget/category_row.dart';
+import 'package:movies_app/features/home/home_tab/presentation/widget/horizontal_movies_list.dart';
+import 'package:movies_app/features/home/home_tab/presentation/widget/movie_carousel.dart';
 
 class MainHomeTab extends StatelessWidget {
   const MainHomeTab({super.key});

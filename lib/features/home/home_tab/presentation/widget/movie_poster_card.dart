@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show SizeExtension;
+import 'package:movies_app/core/utils/app_colors.dart';
+import 'package:movies_app/core/utils/app_icons.dart';
 import 'package:movies_app/core/utils/app_styles.dart';
 
 class MoviePosterCard extends StatelessWidget {
@@ -27,7 +29,7 @@ class MoviePosterCard extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
               errorBuilder: (context, error, stackTrace) =>
-              const Icon(Icons.broken_image, color: Colors.white),
+              const Icon(Icons.broken_image, color: AppColors.white),
             ),
           ),
           Positioned(
@@ -36,7 +38,7 @@ class MoviePosterCard extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
               decoration: BoxDecoration(
-                color: Colors.black54,
+                color: AppColors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Row(
@@ -45,7 +47,7 @@ class MoviePosterCard extends StatelessWidget {
                     rating,
                     style: AppStyles.white14400,
                   ),
-                  const Icon(Icons.star, color: Colors.amber, size: 16),
+                   Icon(Icons.star , color: AppColors.primary, size: 16),
                 ],
               ),
             ),
