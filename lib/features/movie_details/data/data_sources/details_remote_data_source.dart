@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:movies_app/config/api/end_points.dart';
+import 'package:movies_app/features/home/home_tab/data/models/movie_model.dart';
 import '../models/movie_details_model.dart';
 
 abstract class DetailsRemoteDataSource {
@@ -15,13 +16,25 @@ class DetailsRemoteDataSourceImpl implements DetailsRemoteDataSource {
       EndPoints.movieDetails,
       queryParameters: {
         'movie_id': movieId,
-        'with_cast': true, // ضروري جداً لجلب قائمة الممثلين
-        'with_images': true, // لضمان جلب الصور الإضافية
+        'with_cast': true,
+        'with_images': true,
       },
     );
 
+
+    final suggestionsResponse = await dio.get(
+      EndPoints.movieSuggestions,
+      queryParameters: {'movie_id': movieId},
+    );
+
     if (response.data['status'] == 'ok') {
-      return MovieDetailsModel.fromJson(response.data['data']['movie']);
+      List<MovieModel> similar = [];
+      if (suggestionsResponse.data['data']['movies'] != null) {
+        similar = (suggestionsResponse.data['data']['movies'] as List)
+            .map((m) => MovieModel.fromJson(m))
+            .toList();
+      }
+      return MovieDetailsModel.fromJson(response.data['data']['movie'], similar);
     } else {
       throw Exception("Movie not found");
     }
