@@ -30,5 +30,7 @@
   "phone_number": "رقم الهاتف",
   "already_have_account": "لديك حساب بالفعل؟",
   "avatar": "الصورة الشخصية",
-  "verify_email": "تحقق من البريد الإلكتروني"
+  "verify_email": "تحقق من البريد الإلكتروني",
+  "go_to_login_screen": "الذهاب إلى شاشة تسجيل الدخول",
+  "check_your_email": "تحقق من بريدك الإلكتروني"
 }
