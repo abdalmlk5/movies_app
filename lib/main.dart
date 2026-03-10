@@ -1,17 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'config/di/di.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/app_routes.dart';
 import 'features/auth/presentation/views/login_view.dart';
 import 'features/auth/presentation/views/register_view.dart';
 import 'features/auth/presentation/views/reset_password_view.dart';
+import 'features/home/home_screen.dart';
 import 'features/onboarding/presentation/views/onboarding_screen.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  configureDependencies();
 
   runApp(
     EasyLocalization(
@@ -39,6 +45,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.loginScreen: (context) => LoginView(),
           AppRoutes.registerScreen: (context) => RegisterView(),
           AppRoutes.resetPasswordScreen: (context) => ResetPasswordView(),
+          AppRoutes.homeScreen: (context) => HomeScreen(),
         },
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,

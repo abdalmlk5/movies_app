@@ -30,5 +30,7 @@
   "phone_number": "Phone Number",
   "already_have_account": "Already Have Account ?",
   "avatar": "Avatar",
-  "verify_email": "Verify Email"
+  "verify_email": "Verify Email",
+  "go_to_login_screen" : "Go To Login Screen",
+  "check_your_email" : "Check Your Email"
 }
