@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart' show SizeExtension;
 import 'package:movies_app/core/utils/app_colors.dart';
 import 'package:movies_app/features/home/browse_tab/presentation/views/ExploreTab.dart';
 import 'package:movies_app/features/home/home_tab/presentation/views/MainHome.dart';
+import 'package:movies_app/features/home/presentation/widget/custom_bottom_nav_bar.dart';
 import 'package:movies_app/features/home/profile_tab/presentation/views/ProfileTab.dart';
 import 'package:movies_app/features/home/search_tab/presentation/views/SearchTab.dart';
 
@@ -15,8 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // تعريف المتغير المسؤول عن تحديد التاب النشط
   int _selectedIndex = 0;
 
+  // قائمة التابات
   final List<Widget> _tabs = [
     const MainHomeTab(),
     const SearchTab(),
@@ -30,44 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.black,
       body: Stack(
         children: [
+
           _tabs[_selectedIndex],
-          _buildCustomBottomNavBar(),
+
+
+          CustomBottomNavBar(
+            selectedIndex: _selectedIndex,
+            onTap: (int index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+          ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildCustomBottomNavBar() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        margin: EdgeInsets.all(16.w),
-        padding: EdgeInsets.symmetric(vertical: 12.h),
-        decoration: BoxDecoration(
-          color: const Color(0xFF1E1E1E).withOpacity(0.9),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _navItem(Icons.home, 0),
-            _navItem(Icons.search, 1),
-            _navItem(Icons.explore, 2),
-            _navItem(Icons.person, 3),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _navItem(IconData icon, int index) {
-    bool isSelected = _selectedIndex == index;
-    return GestureDetector(
-      onTap: () => setState(() => _selectedIndex = index),
-      child: Icon(
-        icon,
-        color: isSelected ? AppColors.primary : Colors.white,
-        size: 28.sp,
       ),
     );
   }
