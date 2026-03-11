@@ -10,6 +10,7 @@ class CustomMainTextFormField extends StatelessWidget {
   final Color backgroundColor;
   final TextEditingController controller;
   final bool? isSecure;
+  final String? Function(String?)? validator;
 
   const CustomMainTextFormField({
     super.key,
@@ -19,11 +20,13 @@ class CustomMainTextFormField extends StatelessWidget {
     required this.controller,
     this.isSecure,
     this.backgroundColor = AppColors.gray,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       style: AppStyles.white20400,
       decoration: InputDecoration(
         filled: true,
@@ -36,6 +39,7 @@ class CustomMainTextFormField extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
       ),
+      validator: validator,
     );
   }
 }

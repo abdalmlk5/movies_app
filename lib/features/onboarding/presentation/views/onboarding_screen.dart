@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:movies_app/config/cache/cache_helper.dart';
 import 'package:movies_app/core/utils/app_routes.dart';
 import 'package:movies_app/core/utils/app_strings.dart';
 
@@ -12,7 +13,6 @@ import '../models/get_models.dart';
 
 // i covert to statefulWidget to use context in Navigator
 class OnboardingScreen extends StatefulWidget {
-  static const String routName = "onboarding";
   const OnboardingScreen({super.key});
 
   @override
@@ -22,7 +22,6 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final GlobalKey<IntroductionScreenState> introKey =
       GlobalKey<IntroductionScreenState>();
-
 
   List<PageViewModel> getPages() {
     return getModels().map(
@@ -100,10 +99,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           text: isLastPage
                               ? AppStrings.finish.tr()
                               : AppStrings.next.tr(),
-                          onPressed: () {
+                          onPressed: () async {
                             if (isLastPage) {
-                              Navigator.pushNamedAndRemoveUntil(context,
-                                  AppRoutes.loginScreen, (route) => false);
+                              await CacheHelper.saveData(
+                                  key: 'is_onboarding_completed',
+                                  value: 'true');
+                              if (mounted) {
+                                Navigator.pushNamedAndRemoveUntil(context,
+                                    AppRoutes.loginScreen, (route) => false);
+                              }
                             } else {
                               introKey.currentState?.next();
                             }
