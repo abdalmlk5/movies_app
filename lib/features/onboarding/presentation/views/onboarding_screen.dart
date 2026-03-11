@@ -12,6 +12,7 @@ import '../models/get_models.dart';
 
 // i covert to statefulWidget to use context in Navigator
 class OnboardingScreen extends StatefulWidget {
+  static const String routName = "onboarding";
   const OnboardingScreen({super.key});
 
   @override
@@ -21,6 +22,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final GlobalKey<IntroductionScreenState> introKey =
       GlobalKey<IntroductionScreenState>();
+
 
   List<PageViewModel> getPages() {
     return getModels().map(

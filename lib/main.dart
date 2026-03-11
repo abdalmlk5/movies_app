@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/features/home/presentation/view/home_screen.dart';
+import 'package:movies_app/features/movie_details/presentation/views/MovieDetailsScreen.dart';
 
 import 'config/di/di.dart';
 import 'core/theme/app_theme.dart';
