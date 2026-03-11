@@ -12,6 +12,7 @@ import 'package:movies_app/features/auth/presentation/view_model/auth_events.dar
 import '../../../../config/di/di.dart';
 import '../../../../config/validations/app_validations.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../domain/models/app_user.dart';
 import '../view_model/auth_bloc.dart';
 import '../view_model/auth_state.dart';
@@ -72,7 +73,9 @@ class _RegisterViewState extends State<RegisterView> {
                       avatars: avatars,
                       selectedAvatarIndex: selectedAvatarIndex,
                       onPageChanged: (index, _) {
-                        selectedAvatarIndex = index;
+                        setState(() {
+                          selectedAvatarIndex = index;
+                        });
                       },
                     ),
                     SizedBox(height: 10.h),
@@ -109,9 +112,8 @@ class _RegisterViewState extends State<RegisterView> {
                           );
                         }
                         if (state.registerState.data != null) {
-                          print("data: ${state.registerState.data?.email}");
-                          // Navigator.pushNamedAndRemoveUntil(
-                          //     context, AppRoutes.homeScreen, (route) => false);
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, AppRoutes.homeScreen, (route) => false);
                         }
                       },
                       builder: (context, state) {

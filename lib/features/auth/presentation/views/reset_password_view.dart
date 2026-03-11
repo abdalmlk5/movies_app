@@ -72,7 +72,6 @@ class ResetPasswordView extends StatelessWidget {
                           );
                         }
                         if (state.resetPasswordState.data != null) {
-                          print("data: ${state.resetPasswordState.data}");
                           showDialog<void>(
                             context: context,
                             barrierDismissible: false,
@@ -96,19 +95,17 @@ class ResetPasswordView extends StatelessWidget {
                       builder: (context, state) {
                         return CustomMainButton(
                             text: AppStrings.verifyEmail.tr(),
-                            onPressed:
-                                // Logic to create account
-                                state.resetPasswordState.isLoading
-                                    ? null
-                                    : () {
-                                        if (_formKey.currentState!.validate()) {
-                                          context.read<AuthBloc>().add(
-                                                ResetPasswordEvent(
-                                                  emailController.text,
-                                                ),
-                                              );
-                                        }
-                                      });
+                            onPressed: state.resetPasswordState.isLoading
+                                ? null
+                                : () {
+                                    if (_formKey.currentState!.validate()) {
+                                      context.read<AuthBloc>().add(
+                                            ResetPasswordEvent(
+                                              emailController.text,
+                                            ),
+                                          );
+                                    }
+                                  });
                       },
                     ),
                     SizedBox(height: 20.h),

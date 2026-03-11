@@ -72,8 +72,6 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 30.h),
-
-                    // استخدام BlocConsumer للتعامل مع الحالات
                     BlocConsumer<AuthBloc, AuthState>(
                       listenWhen: (previous, current) =>
                           previous.loginState != current.loginState,
@@ -85,15 +83,14 @@ class LoginView extends StatelessWidget {
                           );
                         }
                         if (state.loginState.data != null) {
-                          print("data: ${state.loginState.data?.email}");
-                          // Navigator.pushNamedAndRemoveUntil(
-                          //     context, AppRoutes.homeScreen, (route) => false);
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, AppRoutes.homeScreen, (route) => false);
                         }
                       },
                       builder: (context, state) {
                         return CustomMainButton(
                             text: state.loginState.isLoading
-                                ? "..." // أو أي Loading Widget
+                                ? "..."
                                 : AppStrings.login.tr(),
                             onPressed: state.loginState.isLoading
                                 ? null
@@ -112,7 +109,6 @@ class LoginView extends StatelessWidget {
                                   });
                       },
                     ),
-
                     SizedBox(height: 20.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

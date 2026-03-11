@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart' show SizeExtension;
 import 'package:movies_app/core/utils/app_colors.dart';
 import 'package:movies_app/features/home/browse_tab/presentation/views/ExploreTab.dart';
 import 'package:movies_app/features/home/home_tab/presentation/views/MainHome.dart';
@@ -8,7 +7,6 @@ import 'package:movies_app/features/home/profile_tab/presentation/views/ProfileT
 import 'package:movies_app/features/home/search_tab/presentation/views/SearchTab.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routName = "home";
   const HomeScreen({super.key});
 
   @override
@@ -33,10 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.black,
       body: Stack(
         children: [
-
           _tabs[_selectedIndex],
-
-
           CustomBottomNavBar(
             selectedIndex: _selectedIndex,
             onTap: (int index) {

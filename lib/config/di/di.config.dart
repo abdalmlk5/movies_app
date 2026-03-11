@@ -15,6 +15,8 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../features/auth/data/date_source/auth_data_source.dart' as _i976;
 import '../../features/auth/data/date_source/auth_data_source_impl.dart'
     as _i550;
+import '../../features/auth/data/date_source/auth_local_data_source.dart'
+    as _i998;
 import '../../features/auth/data/repo/auth_repo_impl.dart' as _i984;
 import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
 import '../../features/auth/domain/use_cases/login_use_case.dart' as _i1038;
@@ -37,6 +39,8 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1047.ApiManager>(() => _i1047.ApiManager());
     gh.factory<_i976.AuthDataSource>(() => _i550.AuthDataSourceImpl());
+    gh.factory<_i998.AuthLocalDataSource>(
+        () => _i998.AuthLocalDataSourceImpl());
     gh.factory<_i170.AuthRepo>(
         () => _i984.AuthRepoImpl(dataSource: gh<_i976.AuthDataSource>()));
     gh.factory<_i1038.LoginUseCase>(
