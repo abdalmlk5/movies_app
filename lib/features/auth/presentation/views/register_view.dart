@@ -11,9 +11,9 @@ import 'package:movies_app/features/auth/presentation/view_model/auth_events.dar
 
 import '../../../../config/di/di.dart';
 import '../../../../config/validations/app_validations.dart';
+import '../../../../core/models/app_user.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_routes.dart';
-import '../../domain/models/app_user.dart';
 import '../view_model/auth_bloc.dart';
 import '../view_model/auth_state.dart';
 import '../widgets/avatar_slider.dart';
@@ -131,6 +131,8 @@ class _RegisterViewState extends State<RegisterView> {
                                                     email: emailController.text,
                                                     password:
                                                         passwordController.text,
+                                                    avatarID:
+                                                        selectedAvatarIndex,
                                                   ),
                                                 ),
                                               );

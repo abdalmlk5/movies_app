@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/config/base_response/base_response.dart';
 import 'package:movies_app/config/base_state/base_state.dart';
-import 'package:movies_app/features/auth/domain/models/app_user.dart';
+import 'package:movies_app/core/models/app_user.dart';
 import 'package:movies_app/features/auth/domain/use_cases/reset_password_use_case.dart';
 import 'package:movies_app/features/auth/presentation/view_model/auth_state.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/app_colors.dart';
-import 'package:movies_app/features/home/browse_tab/presentation/views/ExploreTab.dart';
 import 'package:movies_app/features/home/home_tab/presentation/views/MainHome.dart';
 import 'package:movies_app/features/home/presentation/widget/custom_bottom_nav_bar.dart';
-import 'package:movies_app/features/home/profile_tab/presentation/views/ProfileTab.dart';
 import 'package:movies_app/features/home/search_tab/presentation/views/SearchTab.dart';
+
+import '../../profile_tab/presentation/views/profile_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,14 +14,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // تعريف المتغير المسؤول عن تحديد التاب النشط
   int _selectedIndex = 0;
 
-  // قائمة التابات
   final List<Widget> _tabs = [
     const MainHomeTab(),
     const SearchTab(),
-    const ExploreTab(),
+    const ProfileTab(),
     const ProfileTab(),
   ];
 

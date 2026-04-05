@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/config/cache/cache_helper.dart';
-import 'package:movies_app/features/auth/domain/models/app_user.dart';
+import 'package:movies_app/core/models/app_user.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> saveUser(AppUser user);

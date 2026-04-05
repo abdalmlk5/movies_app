@@ -1,6 +1,6 @@
 import 'package:movies_app/config/base_response/base_response.dart';
 
-import '../models/app_user.dart';
+import '../../../../core/models/app_user.dart';
 
 abstract class AuthRepo {
   Future<BaseResponse<AppUser>> register(AppUser user);

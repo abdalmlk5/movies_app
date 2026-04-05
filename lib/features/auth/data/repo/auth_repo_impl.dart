@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/config/base_response/base_response.dart';
 import 'package:movies_app/config/cache/cache_helper.dart';
+import 'package:movies_app/core/models/app_user.dart';
 import 'package:movies_app/features/auth/data/date_source/auth_data_source.dart';
-import 'package:movies_app/features/auth/domain/models/app_user.dart';
 
 import '../../domain/repo/auth_repo.dart';
 
@@ -20,6 +20,8 @@ class AuthRepoImpl implements AuthRepo {
     switch (response) {
       case SuccessBaseResponse<UserCredential>():
         user.userID = response.data.user!.uid;
+        //SAVE UID IN CACHE
+        CacheHelper.saveData(key: "uId", value: user.userID);
         CacheHelper.saveJson(key: "currentUser", value: user.toJson());
         return SuccessBaseResponse<AppUser>(data: user);
       case ErrorBaseResponse<UserCredential>():
@@ -34,7 +36,8 @@ class AuthRepoImpl implements AuthRepo {
     switch (response) {
       case SuccessBaseResponse<UserCredential>():
         user.userID = response.data.user!.uid;
-        CacheHelper.saveJson(key: "currentUser", value: user.toJson());
+        CacheHelper.saveData(key: "uId", value: user.userID);
+        await CacheHelper.saveJson(key: "currentUser", value: user.toJson());
         return SuccessBaseResponse<AppUser>(data: user);
       case ErrorBaseResponse<UserCredential>():
         return ErrorBaseResponse<AppUser>(errorMessage: response.errorMessage);
