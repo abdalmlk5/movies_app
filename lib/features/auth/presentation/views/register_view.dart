@@ -11,9 +11,9 @@ import 'package:movies_app/features/auth/presentation/view_model/auth_events.dar
 
 import '../../../../config/di/di.dart';
 import '../../../../config/validations/app_validations.dart';
+import '../../../../core/models/app_user.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_routes.dart';
-import '../../domain/models/app_user.dart';
 import '../view_model/auth_bloc.dart';
 import '../view_model/auth_state.dart';
 import '../widgets/avatar_slider.dart';
@@ -27,9 +27,9 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  // final nameController = TextEditingController();
-  // final confirmPasswordController = TextEditingController();
-  // final phoneController = TextEditingController();
+  final nameController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final phoneController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -85,6 +85,15 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                     SizedBox(height: 15.h),
                     CustomMainTextFormField(
+                      hintText:
+                          'Name', // You can use AppStrings.name.tr() if added
+                      prefixIcon:
+                          AppIcons.profileIcon, // Ensure profileIcon exists
+                      controller: nameController,
+                      validator: (value) => AppValidations.validateName(value),
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomMainTextFormField(
                       hintText: AppStrings.email.tr(),
                       prefixIcon: AppIcons.emailIcon,
                       controller: emailController,
@@ -98,6 +107,24 @@ class _RegisterViewState extends State<RegisterView> {
                       isSecure: true,
                       validator: (value) =>
                           AppValidations.validatePassword(value),
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomMainTextFormField(
+                      hintText: 'Confirm Password',
+                      prefixIcon: AppIcons.passwordIcon,
+                      controller: confirmPasswordController,
+                      isSecure: true,
+                      validator: (value) =>
+                          AppValidations.validateConfirmPassword(
+                              value, passwordController.text),
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomMainTextFormField(
+                      hintText: 'Phone',
+                      prefixIcon: AppIcons.phoneIcon, // Ensure phoneIcon exists
+                      controller: phoneController,
+                      validator: (value) =>
+                          AppValidations.validatePhoneNumber(value),
                     ),
                     SizedBox(height: 30.h),
                     BlocConsumer<AuthBloc, AuthState>(
@@ -119,23 +146,24 @@ class _RegisterViewState extends State<RegisterView> {
                       builder: (context, state) {
                         return CustomMainButton(
                             text: AppStrings.createAccount.tr(),
-                            onPressed:
-                                // Logic to create account
-                                state.registerState.isLoading
-                                    ? null
-                                    : () {
-                                        if (_formKey.currentState!.validate()) {
-                                          context.read<AuthBloc>().add(
-                                                RegisterEvent(
-                                                  AppUser(
-                                                    email: emailController.text,
-                                                    password:
-                                                        passwordController.text,
-                                                  ),
-                                                ),
-                                              );
-                                        }
-                                      });
+                            onPressed: state.registerState.isLoading
+                                ? null
+                                : () {
+                                    if (_formKey.currentState!.validate()) {
+                                      context.read<AuthBloc>().add(
+                                            RegisterEvent(
+                                              AppUser(
+                                                name: nameController.text,
+                                                email: emailController.text,
+                                                password:
+                                                    passwordController.text,
+                                                phone: phoneController.text,
+                                                avatarID: selectedAvatarIndex,
+                                              ),
+                                            ),
+                                          );
+                                    }
+                                  });
                       },
                     ),
                     SizedBox(height: 20.h),

@@ -2,15 +2,15 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_app/config/cache/cache_helper.dart';
 import 'package:movies_app/core/models/app_user.dart';
 
-abstract class AuthLocalDataSource {
+abstract class ProfileLocalDataSource {
   Future<void> saveUser(AppUser user);
   Future<AppUser?> getUser();
   Future<void> deleteUser();
 }
 
-@Injectable(as: AuthLocalDataSource)
-class AuthLocalDataSourceImpl implements AuthLocalDataSource {
-  static const String _userKey = "currentUser";
+@Injectable(as: ProfileLocalDataSource)
+class ProfileLocalDataSourceImpl implements ProfileLocalDataSource {
+  static const String _userKey = 'currentUser';
 
   @override
   Future<void> saveUser(AppUser user) async {

@@ -1,4 +1,4 @@
-import '../../data/models/movie_model.dart';
+import '../../../../../core/models/movie_model.dart';
 
 abstract class HomeRepo {
   Future<List<MovieModel>> fetchMovies();

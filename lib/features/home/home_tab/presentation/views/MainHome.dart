@@ -34,12 +34,12 @@ class MainHomeTab extends StatelessWidget {
                     children: [
                       SizedBox(height: 50.h),
                       Center(
-                          child: Image.asset(AppImages.AvailableNow,
+                          child: Image.asset(AppImages.availableNow,
                               height: 80.h)),
                       MovieCarousel(movies: state.movies),
                       SizedBox(height: 20.h),
                       Center(
-                          child: Image.asset(AppImages.WatchNowText,
+                          child: Image.asset(AppImages.watchNowText,
                               height: 100.h)),
                       const CategoryRow(title: 'Popular Movies'),
                       HorizontalMoviesList(movies: state.movies),

@@ -1,4 +1,4 @@
-class MovieModel {
+﻿class MovieModel {
   final int id;
   final String title;
   final String mediumCoverImage;
@@ -13,5 +13,14 @@ class MovieModel {
       mediumCoverImage: json['medium_cover_image'],
       rating: (json['rating'] as num).toDouble(),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'medium_cover_image': mediumCoverImage,
+      'rating': rating,
+    };
   }
 }

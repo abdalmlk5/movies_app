@@ -31,6 +31,17 @@
   "already_have_account": "Already Have Account ?",
   "avatar": "Avatar",
   "verify_email": "Verify Email",
+  "watch_list": "Watch List",
+  "history": "History",
+  "edit_profile": "Edit Profile",
+  "delete_account": "Delete Account",
+  "update_data": "Update Data",
+  "update_profile": "Update Profile",
+  "no_items_yet": "No items yet",
+  "empty_profile_message": "Save favorites to see them here",
+  "profile": "Profile",
   "go_to_login_screen" : "Go To Login Screen",
-  "check_your_email" : "Check Your Email"
+  "check_your_email" : "Check Your Email",
+  "exit": "Exit",
+  "pick_avatar": "Pick Avatar"
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show SizeExtension;
-import 'package:movies_app/features/home/home_tab/data/models/movie_model.dart';
 import 'package:movies_app/features/home/home_tab/presentation/widget/movie_poster_card.dart';
 import 'package:movies_app/features/movie_details/presentation/views/MovieDetailsScreen.dart';
+
+import '../../../../../core/models/movie_model.dart';
 
 class MovieCarousel extends StatefulWidget {
   final List<MovieModel> movies;
@@ -39,18 +40,15 @@ class _MovieCarouselState extends State<MovieCarousel> {
               return Transform.scale(
                 scale: value,
                 child: GestureDetector(
-
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MovieDetailsScreen(movieId: widget.movies[index].id),
-                        ),
-                      );
-                    },
-
-
-
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailsScreen(
+                            movieId: widget.movies[index].id),
+                      ),
+                    );
+                  },
                   child: MoviePosterCard(
                     imageUrl: widget.movies[index].mediumCoverImage,
                     rating: widget.movies[index].rating.toString(),

@@ -1,4 +1,4 @@
-import 'package:movies_app/features/home/home_tab/data/models/movie_model.dart';
+import '../../../../../core/models/movie_model.dart';
 
 class MovieDetailsModel {
   final int id;
@@ -29,12 +29,16 @@ class MovieDetailsModel {
     required this.genres,
   });
 
-  factory MovieDetailsModel.fromJson(Map<String, dynamic> json, List<MovieModel> similar) {
+  factory MovieDetailsModel.fromJson(
+      Map<String, dynamic> json, List<MovieModel> similar) {
     // تجميع الصور السكرين شوت
     List<String> screenshotUrls = [];
-    if (json['large_screenshot_image1'] != null) screenshotUrls.add(json['large_screenshot_image1']);
-    if (json['large_screenshot_image2'] != null) screenshotUrls.add(json['large_screenshot_image2']);
-    if (json['large_screenshot_image3'] != null) screenshotUrls.add(json['large_screenshot_image3']);
+    if (json['large_screenshot_image1'] != null)
+      screenshotUrls.add(json['large_screenshot_image1']);
+    if (json['large_screenshot_image2'] != null)
+      screenshotUrls.add(json['large_screenshot_image2']);
+    if (json['large_screenshot_image3'] != null)
+      screenshotUrls.add(json['large_screenshot_image3']);
 
     return MovieDetailsModel(
       id: json['id'],
@@ -49,8 +53,9 @@ class MovieDetailsModel {
       similarMovies: similar,
       genres: json['genres'] ?? [],
       cast: (json['cast'] as List?)
-          ?.map((actor) => CastModel.fromJson(actor))
-          .toList() ?? [],
+              ?.map((actor) => CastModel.fromJson(actor))
+              .toList() ??
+          [],
     );
   }
 }
@@ -60,7 +65,8 @@ class CastModel {
   final String characterName;
   final String? urlSmallImage;
 
-  CastModel({required this.name, required this.characterName, this.urlSmallImage});
+  CastModel(
+      {required this.name, required this.characterName, this.urlSmallImage});
 
   factory CastModel.fromJson(Map<String, dynamic> json) {
     return CastModel(

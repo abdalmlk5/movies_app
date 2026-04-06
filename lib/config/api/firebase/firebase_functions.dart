@@ -1,16 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:movies_app/config/base_response/base_response.dart';
+import 'package:movies_app/core/models/app_user.dart';
 
 class FirebaseFunctions {
-  static Future<BaseResponse<UserCredential>> createUserWithEmailAndPassword(
-      {required String email, required String password}) async {
+  static CollectionReference<AppUser> getUsersCollection() {
+    return FirebaseFirestore.instance
+        .collection("Users")
+        .withConverter<AppUser>(
+      fromFirestore: (snapshot, _) {
+        return AppUser.fromJson(snapshot.data()!);
+      },
+      toFirestore: (user, _) {
+        return user.toJson();
+      },
+    );
+  }
+
+  static Future<BaseResponse<AppUser>> createUserWithEmailAndPassword({
+    required AppUser user,
+  }) async {
     try {
       UserCredential credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: user.email,
+        password: user.password,
       );
-      return SuccessBaseResponse<UserCredential>(data: credential);
+      user.userID = credential.user!.uid;
+      await getUsersCollection().doc(user.userID).set(user);
+      return SuccessBaseResponse<AppUser>(data: user);
     } on FirebaseAuthException catch (e) {
       String message = 'Authentication error';
       if (e.code == 'weak-password') {
@@ -18,13 +36,13 @@ class FirebaseFunctions {
       } else if (e.code == 'email-already-in-use') {
         message = 'The account already exists for that email.';
       }
-      return ErrorBaseResponse<UserCredential>(errorMessage: message);
+      return ErrorBaseResponse<AppUser>(errorMessage: message);
     } catch (e) {
-      return ErrorBaseResponse<UserCredential>(errorMessage: e.toString());
+      return ErrorBaseResponse<AppUser>(errorMessage: e.toString());
     }
   }
 
-  static Future<BaseResponse<UserCredential>> signInWithEmailAndPassword(
+  static Future<BaseResponse<AppUser>> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
       UserCredential credential =
@@ -32,7 +50,13 @@ class FirebaseFunctions {
         email: email,
         password: password,
       );
-      return SuccessBaseResponse<UserCredential>(data: credential);
+      var userSnapshot =
+          await getUsersCollection().doc(credential.user!.uid).get();
+      if (userSnapshot.exists) {
+        return SuccessBaseResponse<AppUser>(data: userSnapshot.data()!);
+      } else {
+        return ErrorBaseResponse<AppUser>(errorMessage: "User data not found");
+      }
     } on FirebaseAuthException catch (e) {
       String message = 'Wrong email or password';
       if (e.code == 'user-not-found') {
@@ -40,9 +64,9 @@ class FirebaseFunctions {
       } else if (e.code == 'wrong-password') {
         message = 'Wrong password provided for that user.';
       }
-      return ErrorBaseResponse<UserCredential>(errorMessage: message);
+      return ErrorBaseResponse<AppUser>(errorMessage: message);
     } catch (e) {
-      return ErrorBaseResponse<UserCredential>(errorMessage: e.toString());
+      return ErrorBaseResponse<AppUser>(errorMessage: e.toString());
     }
   }
 
@@ -66,5 +90,10 @@ class FirebaseFunctions {
     } catch (e) {
       return ErrorBaseResponse<String>(errorMessage: e.toString());
     }
+  }
+
+  static Future<void> deleteUser(String userID) async {
+    await getUsersCollection().doc(userID).delete();
+    await FirebaseAuth.instance.currentUser?.delete();
   }
 }

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:movies_app/config/api/end_points.dart';
-import 'package:movies_app/features/home/home_tab/data/models/movie_model.dart';
 import 'package:movies_app/features/home/home_tab/domain/repo/home_repo.dart';
 
+import '../../../../../core/models/movie_model.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final Dio dio = Dio();

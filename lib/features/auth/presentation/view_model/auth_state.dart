@@ -1,5 +1,5 @@
 import 'package:movies_app/config/base_state/base_state.dart';
-import 'package:movies_app/features/auth/domain/models/app_user.dart';
+import 'package:movies_app/core/models/app_user.dart';
 
 class AuthState {
   final BaseState<AppUser> loginState;

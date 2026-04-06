@@ -13,8 +13,8 @@ import 'package:movies_app/features/auth/presentation/view_model/auth_state.dart
 
 import '../../../../config/di/di.dart';
 import '../../../../config/validations/app_validations.dart';
+import '../../../../core/models/app_user.dart';
 import '../../../../core/utils/app_routes.dart';
-import '../../domain/models/app_user.dart';
 import '../view_model/auth_events.dart';
 import '../widgets/language_toggle_switch.dart';
 

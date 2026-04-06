@@ -34,4 +34,15 @@ class AppStrings {
   static const String alreadyHaveAccount = 'already_have_account';
   static const String avatar = 'avatar';
   static const String verifyEmail = 'verify_email';
+  static const String watchList = 'watch_list';
+  static const String history = 'history';
+  static const String editProfile = 'edit_profile';
+  static const String deleteAccount = 'delete_account';
+  static const String updateData = 'update_data';
+  static const String updateProfile = 'update_profile';
+  static const String noItemsYet = 'no_items_yet';
+  static const String emptyProfileMessage = 'empty_profile_message';
+  static const String profile = 'profile';
+  static const String exit = 'exit';
+  static const String pickAvatar = 'pick_avatar';
 }

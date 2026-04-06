@@ -3,6 +3,8 @@ const _imagesPath = 'assets/images/';
 const _iconsPath = 'assets/icons/';
 
 class AppIcons {
+  AppIcons._();
+
   static const String exitIcon = '${_iconsPath}exit_icon.png';
   static const String homeIcon = '${_iconsPath}home_icon.png';
   static const String likeIcon = '${_iconsPath}like_icon.png';
@@ -23,9 +25,27 @@ class AppIcons {
   static const String playMovieIcon = '${_iconsPath}play_movie_icon.png';
   static const String egFlagIcon = '${_iconsPath}eg_flag.png';
   static const String usFlagIcon = '${_iconsPath}us_flag.png';
+  static const String emptyIcon = '${_iconsPath}empty_icon.png';
 }
 
 class AppImages {
+  AppImages._();
+  static String getAvatar(int index) {
+    return '${_imagesPath}avatar_$index.png';
+  }
+
+  static const List<String> avatars = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5,
+    avatar6,
+    avatar7,
+    avatar8,
+    avatar9,
+  ];
+
   static const String avatar1 = '${_imagesPath}avatar_1.png';
   static const String avatar2 = '${_imagesPath}avatar_2.png';
   static const String avatar3 = '${_imagesPath}avatar_3.png';
@@ -36,10 +56,8 @@ class AppImages {
   static const String avatar8 = '${_imagesPath}avatar_8.png';
   static const String avatar9 = '${_imagesPath}avatar_9.png';
 
-  static const String AvailableNow = '${_imagesPath}available_now.png';
-  static const String WatchNowText = '${_imagesPath}watch_now.png';
-
-
+  static const String availableNow = '${_imagesPath}available_now.png';
+  static const String watchNowText = '${_imagesPath}watch_now.png';
 
   static const String forgetPasswordImage =
       '${_imagesPath}forget_password_image.png';
@@ -47,6 +65,8 @@ class AppImages {
 }
 
 class OnBoardingAssets {
+  OnBoardingAssets._();
+
   static const String onBoarding1 = '${_onBoardingPath}on_boarding_1.png';
   static const String onBoarding2 = '${_onBoardingPath}on_boarding_2.png';
   static const String onBoarding3 = '${_onBoardingPath}on_boarding_3.png';

@@ -1,4 +1,4 @@
-import 'package:movies_app/features/auth/domain/models/app_user.dart';
+import 'package:movies_app/core/models/app_user.dart';
 
 abstract class AuthEvents {}
 
