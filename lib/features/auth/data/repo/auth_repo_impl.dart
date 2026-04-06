@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/config/base_response/base_response.dart';
 import 'package:movies_app/config/cache/cache_helper.dart';
@@ -15,31 +14,29 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<BaseResponse<AppUser>> login(AppUser user) async {
-    BaseResponse<UserCredential> response =
+    BaseResponse<AppUser> response =
         await dataSource.login(user.email, user.password);
     switch (response) {
-      case SuccessBaseResponse<UserCredential>():
-        user.userID = response.data.user!.uid;
+      case SuccessBaseResponse<AppUser>():
         //SAVE UID IN CACHE
-        CacheHelper.saveData(key: "uId", value: user.userID);
-        CacheHelper.saveJson(key: "currentUser", value: user.toJson());
-        return SuccessBaseResponse<AppUser>(data: user);
-      case ErrorBaseResponse<UserCredential>():
+        CacheHelper.saveData(key: "uId", value: response.data.userID);
+        CacheHelper.saveJson(key: "currentUser", value: response.data.toJson());
+        return SuccessBaseResponse<AppUser>(data: response.data);
+      case ErrorBaseResponse<AppUser>():
         return ErrorBaseResponse<AppUser>(errorMessage: response.errorMessage);
     }
   }
 
   @override
   Future<BaseResponse<AppUser>> register(AppUser user) async {
-    BaseResponse<UserCredential> response =
-        await dataSource.register(user.email, user.password);
+    BaseResponse<AppUser> response = await dataSource.register(user);
     switch (response) {
-      case SuccessBaseResponse<UserCredential>():
-        user.userID = response.data.user!.uid;
-        CacheHelper.saveData(key: "uId", value: user.userID);
-        await CacheHelper.saveJson(key: "currentUser", value: user.toJson());
-        return SuccessBaseResponse<AppUser>(data: user);
-      case ErrorBaseResponse<UserCredential>():
+      case SuccessBaseResponse<AppUser>():
+        CacheHelper.saveData(key: "uId", value: response.data.userID);
+        await CacheHelper.saveJson(
+            key: "currentUser", value: response.data.toJson());
+        return SuccessBaseResponse<AppUser>(data: response.data);
+      case ErrorBaseResponse<AppUser>():
         return ErrorBaseResponse<AppUser>(errorMessage: response.errorMessage);
     }
   }
