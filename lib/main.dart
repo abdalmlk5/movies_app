@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/config/cache/cache_helper.dart';
 import 'package:movies_app/features/home/presentation/view/home_screen.dart';
+import 'package:movies_app/features/home/profile_tab/presentation/views/update_profile_view.dart';
 
 import 'config/di/di.dart';
 import 'core/theme/app_theme.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
       AppRoutes.registerScreen: (_) => const RegisterView(),
       AppRoutes.resetPasswordScreen: (_) => ResetPasswordView(),
       AppRoutes.homeScreen: (_) => const HomeScreen(),
+      AppRoutes.updateProfileScreen: (_) => const UpdateProfileView(),
     };
   }
 }

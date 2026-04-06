@@ -91,4 +91,9 @@ class FirebaseFunctions {
       return ErrorBaseResponse<String>(errorMessage: e.toString());
     }
   }
+
+  static Future<void> deleteUser(String userID) async {
+    await getUsersCollection().doc(userID).delete();
+    await FirebaseAuth.instance.currentUser?.delete();
+  }
 }
