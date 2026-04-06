@@ -31,6 +31,17 @@
   "already_have_account": "لديك حساب بالفعل؟",
   "avatar": "الصورة الشخصية",
   "verify_email": "تحقق من البريد الإلكتروني",
+  "watch_list": "قائمة المشاهدة",
+  "history": "التاريخ",
+  "edit_profile": "تعديل الملف الشخصي",
+  "delete_account": "حذف الحساب",
+  "update_data": "تحديث البيانات",
+  "update_profile": "تحديث الملف الشخصي",
+  "no_items_yet": "لا يوجد عناصر بعد",
+  "empty_profile_message": "احفظ المفضلات لتظهر هنا",
+  "profile": "الملف الشخصي",
   "go_to_login_screen": "الذهاب إلى شاشة تسجيل الدخول",
-  "check_your_email": "تحقق من بريدك الإلكتروني"
+  "check_your_email": "تحقق من بريدك الإلكتروني",
+  "exit": "خروج",
+  "pick_avatar": "اختر صورة شخصية"
 }

@@ -25,6 +25,7 @@ class AppIcons {
   static const String playMovieIcon = '${_iconsPath}play_movie_icon.png';
   static const String egFlagIcon = '${_iconsPath}eg_flag.png';
   static const String usFlagIcon = '${_iconsPath}us_flag.png';
+  static const String emptyIcon = '${_iconsPath}empty_icon.png';
 }
 
 class AppImages {
@@ -32,6 +33,18 @@ class AppImages {
   static String getAvatar(int index) {
     return '${_imagesPath}avatar_$index.png';
   }
+
+  static const List<String> avatars = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5,
+    avatar6,
+    avatar7,
+    avatar8,
+    avatar9,
+  ];
 
   static const String avatar1 = '${_imagesPath}avatar_1.png';
   static const String avatar2 = '${_imagesPath}avatar_2.png';

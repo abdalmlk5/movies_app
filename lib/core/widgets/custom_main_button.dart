@@ -9,6 +9,7 @@ class CustomMainButton extends StatelessWidget {
   final bool isLoading;
   final Color? backgroundColor;
   final Color? textColor;
+  final TextStyle? textStyle;
   final double borderRadius;
   final double height;
   final Color? borderColor;
@@ -21,6 +22,7 @@ class CustomMainButton extends StatelessWidget {
     this.isLoading = false,
     this.backgroundColor,
     this.textColor,
+    this.textStyle,
     this.borderRadius = 12,
     this.height = 55,
     this.borderColor,
@@ -92,12 +94,13 @@ class CustomMainButton extends StatelessWidget {
         ],
         Text(
           text,
-          style: (backgroundColor == Colors.transparent
-                  ? AppStyles.primary20600
-                  : AppStyles.black20600)
-              .copyWith(
-            color: textColor,
-          ),
+          style: textStyle ??
+              (backgroundColor == Colors.transparent
+                      ? AppStyles.primary20600
+                      : AppStyles.black20600)
+                  .copyWith(
+                color: textColor,
+              ),
         ),
       ],
     );
